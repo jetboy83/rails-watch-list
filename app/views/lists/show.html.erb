@@ -1,0 +1,27 @@
+<div class="container my-4">
+  <h1 class="mb-4">You are in the <%= @list.name %> list</h1>
+
+  <p>
+    <%= @list.name %> | <%= link_to "+Add bookmark", new_list_bookmark_path(@list.id), class: "btn btn-primary" %>
+  </p>
+
+  <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <% if bookmark.movie.poster_url.present? %>
+            <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="<%= bookmark.movie.title %>">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= bookmark.movie.title %></h5>
+            <p class="card-text"><%= bookmark.comment %></p>
+            <p class="card-text"><small class="text-muted">List: <%= bookmark.list.name %></small></p>
+            <%= link_to "Delete bookmark", bookmark_path(bookmark),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

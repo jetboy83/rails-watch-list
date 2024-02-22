@@ -1,0 +1,28 @@
+<!-- Banner Section -->
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= asset_url('banner_image.jpg') %>);">
+  <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <h1 class="text-center text-white">My Movie Stadium</h1>
+  </div>
+</div>
+
+<!-- Lists Section -->
+<div class="container mt-5">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<%= asset_url('action_image.jpg') %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">
+              <%= link_to list.name, list_path(list), class: "fw-bold text-dark" %>
+            </h3>
+            <!-- Optional: Add more list details here -->
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
