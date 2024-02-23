@@ -6,6 +6,8 @@ default: &default
 development:
   <<: *default
   database: rails-watch-list_development
+  url: <%= ENV['$SCALINGO_POSTGRESQL_URL'] %>
+
 
 test:
   <<: *default
