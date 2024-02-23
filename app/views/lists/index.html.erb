@@ -11,7 +11,7 @@
     <% @lists.each do |list| %>
       <div class="col-md-4 mb-4">
         <div class="card h-100">
-          <img src="<%= asset_url('action_image.jpg') %>" class="card-img-top" alt="...">
+          <%= cl_image_tag list.photo.key, crop: :fill %>
           <div class="card-body">
             <h3 class="card-title">
               <%= link_to list.name, list_path(list), class: "fw-bold text-dark" %>

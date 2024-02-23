@@ -23,19 +23,12 @@ puts "Cleaning movies database..."
 Movie.destroy_all
 
 puts "Creating movies..."
-data["results"].first(10).each do |movie_data|
+data["results"].first(20).each do |movie_data|
   Movie.create!(
     title: movie_data["title"],
     overview: movie_data["overview"],
     poster_url: "https://image.tmdb.org/t/p/w500#{movie_data['poster_path']}",
     rating: movie_data["vote_average"]
-  )
-end
-
-puts "Creating lists..."
-4.times do
-  List.create!(
-    name: Faker::Lorem.sentence(word_count: 1)
   )
 end
 
